@@ -1,54 +1,72 @@
-# React + TypeScript + Vite
+# Serverless Web Application Using Generative AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project leverages **AWS Amplify** to build a **serverless web application** powered by **Generative AI** using **Amazon Bedrock** and the **Claude 3.5 Sonnet** foundation model.
 
-Currently, two official plugins are available:
+## 📌 Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Users can enter a list of ingredients, and the application will generate delicious recipes based on the input. The application includes:
+- A user-friendly **HTML-based interface** for ingredient input
+- A **backend** connected to Amazon Bedrock to invoke Claude 3.5 Sonnet for recipe generation
 
-## Expanding the ESLint configuration
+## 🧱 Architecture Diagram
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![image](https://github.com/user-attachments/assets/89d00373-d103-4ea5-a366-b6f830d7174e)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚙️ Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Frontend**: React + TypeScript (via Vite)
+- **Backend**: AWS Amplify with GraphQL API and custom authorization
+- **AI Model**: Claude 3.5 Sonnet via Amazon Bedrock
+- **Hosting**: Amplify Hosting
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 🚀 How It Works
+
+1. User inputs ingredients via the UI
+2. Frontend sends request to Amplify GraphQL API
+3. Backend invokes Claude 3.5 Sonnet using Bedrock
+4. AI model generates a recipe
+5. The result is displayed in the frontend
+
+## 🖼️ Outcome
+
+Here are example outcomes of the application:
+
+### 🍲 Example 1
+![aws_proj_1](https://github.com/user-attachments/assets/70a23cb6-e115-42a5-88cb-48a6f26b1d8b)
+
+
+### 🍲 Example 2
+![aws_proj_2](https://github.com/user-attachments/assets/12db77ab-90c0-4e9b-a3c2-841d4906b179)
+
+### AWS Amplify Console
+![aws_proj_3](https://github.com/user-attachments/assets/c75459a0-fdb5-477f-a1d9-3841143c979e)
+
+
+
+## 📝 Setup Instructions
+
+1. Clone the repo and install dependencies:
+   ```bash
+   git clone https://github.com/your-username/ai-recipe-generator.git
+   cd ai-recipe-generator
+2. 🧩 Install Dependencies
+   ```bash
+   npm install
+3. ⚙️ Configure AWS Amplify
+   ```bash
+   npx ampx configure profile
+4. 🚧 Start Sandbox Environment
+   ```bash
+   npx ampx sandbox
+5. 🌍 Deploy to AWS
+   ```bash
+   amplify publish
+This command will:
+- Deploy all Amplify backend resources (Auth, GraphQL, etc.)
+- Host the React frontend using Amplify Hosting
+
+### Locally if you want to run  
+💻 Run Frontend Locally
+```bash
+npm run dev
